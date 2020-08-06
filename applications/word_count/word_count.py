@@ -1,5 +1,23 @@
 def word_count(s):
     # Your code here
+    cache = {}
+
+    #remove specific characters
+    for char in '":;,.-+=/\\|[]{}()*^&':  
+        s = s.replace(char,'')
+    #if no input return empty dict
+    if s == "":
+        return {}
+        
+    for word in s.split():
+        lowcase = word.lower()
+        if lowcase not in cache:
+            cache[lowcase] = 1
+        else:
+            cache[lowcase] += 1
+
+    return cache
+
 
 
 
